@@ -1,7 +1,7 @@
-// Q4.Describe the usage of the comma operator in JavaScript and provide an example.
+async function fetchData(url) {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+}
 
-let a = 5,
- b = 7,
- c = 9;
-
-console.log(a,b,c);
+fetchData("https://jsonplaceholder.typicode.com/todos/1");

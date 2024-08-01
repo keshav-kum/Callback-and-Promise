@@ -1,6 +1,14 @@
-// Q7. you are building a weather application. Write a JavaScript program that takes  the current temprature as input and uses the conditional (ternary) operator to determine and print the weather condition. if the temprature is above 30 degree celcius, the condition is "Hot"; otherwise, it is "Moderate".
+function fetchMultipleData(urls) {
+    const promises = urls.map((url) => 
+        fetch(url).then((response) => response.json())
+    )
+    return Promise.all(promises);
+}
 
-// let temperature = 35;
+const urlsToFetch = [
+    "https://jsonplaceholder.typicode.com/todos/1",
+    "https://jsonplaceholder.typicode.com/todos/2",
+    "https://jsonplaceholder.typicode.com/todos/3"
+];
 
-// let currentTemperature = (temperature>=30?"today temperature is hot":"Moderate");
-// console.log(currentTemperature);
+fetchMultipleData(urlsToFetch).then((response) => { console.log(response) });

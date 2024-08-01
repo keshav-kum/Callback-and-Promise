@@ -1,12 +1,19 @@
-// Q8. you are creating a program to calculate the sum of numbers. Write jawascript program that takes a positive integer as input and usage a do-while loop to calculate and print the sum of all numbers from 1 to the given integer.
+function racePromises(promises) {
+    return Promise.race(promises);
+};
 
+const promise1 = new Promise((resolve) => {
+    setTimeout(() => { resolve("Promise 1 resolved") }, 1000)
+});
 
-// let targetNumber = 9;
-// let sum =0;
-// let currentNumber =1;
+const promise2 = new Promise((resolve) => {
+    setTimeout(() => resolve("promise 2 rejected"), 500)
+});
 
-// do{
-//     sum+=currentNumber;
-//     currentNumber++
-// }while(currentNumber<=targetNumber);
-// console.log(`Sum of number from 1 to ${targetNumber}: ${sum}`);
+racePromises([promise1, promise2])
+    .then((result) => {
+        console.log(result);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
